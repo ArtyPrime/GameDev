@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c6s1vubbe4aai"]
+
+[node name="main_menu" type="Node"]
+
+[node name="Play" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 128.0
+offset_right = 768.0
+offset_bottom = 256.0
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 384.0
+offset_right = 768.0
+offset_bottom = 512.0
+size_flags_horizontal = 4
+tooltip_text = "Quit to Desktop"
+text = "Quit
+"
