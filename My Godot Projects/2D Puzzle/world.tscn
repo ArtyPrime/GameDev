@@ -6,13 +6,12 @@
 size = Vector2(1152, 106)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vd3nk"]
-size = Vector2(64, 704)
+size = Vector2(63.54, 704)
 
 [node name="world" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_feyfa")]
 position = Vector2(60, 123)
-scale = Vector2(3, 3)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(81, 393)
@@ -27,7 +26,7 @@ position = Vector2(-113, -41)
 shape = SubResource("RectangleShape2D_vd3nk")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1103, -41)
+position = Vector2(1095.07, -41)
 shape = SubResource("RectangleShape2D_vd3nk")
 
 [node name="Panel" type="Panel" parent="."]
