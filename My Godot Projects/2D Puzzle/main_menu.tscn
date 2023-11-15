@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://c6s1vubbe4aai"]
+[gd_scene load_steps=2 format=3 uid="uid://c6s1vubbe4aai"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_17kjk"]
 
 [node name="main_menu" type="Node"]
+script = ExtResource("1_17kjk")
 
 [node name="Play" type="Button" parent="."]
 offset_left = 448.0
@@ -18,3 +21,6 @@ size_flags_horizontal = 4
 tooltip_text = "Quit to Desktop"
 text = "Quit
 "
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
