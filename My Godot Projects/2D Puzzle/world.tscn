@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcyuvus53mu8n"]
+[gd_scene load_steps=9 format=3 uid="uid://bcyuvus53mu8n"]
 
 [ext_resource type="PackedScene" uid="uid://bk0e8afg5r36a" path="res://Player/Player_model.tscn" id="1_feyfa"]
 [ext_resource type="PackedScene" uid="uid://bva4mcywyvdl7" path="res://background.tscn" id="2_emlca"]
 [ext_resource type="Texture2D" uid="uid://b4wb12gnte7yg" path="res://Assets/Free/Terrain/Terrain (16x16).png" id="3_cluwh"]
-[ext_resource type="PackedScene" uid="uid://o1c7pykva1fy" path="res://enemy.tscn" id="4_ny18i"]
+[ext_resource type="PackedScene" uid="uid://o1c7pykva1fy" path="res://Enemy/enemy.tscn" id="4_ny18i"]
+[ext_resource type="Script" path="res://HPBar.gd" id="5_o5u4f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2gq6"]
 texture = ExtResource("3_cluwh")
@@ -453,6 +454,20 @@ texture = ExtResource("3_cluwh")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_r2gq6")
 
+[sub_resource type="GDScript" id="GDScript_hsyus"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Coin: \" + str(Game.coin)
+"
+
 [node name="world" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_emlca")]
@@ -471,3 +486,29 @@ position = Vector2(135, 433)
 
 [node name="Enemy" parent="EnemyNode" instance=ExtResource("4_ny18i")]
 position = Vector2(325, 560)
+
+[node name="Enemy2" parent="EnemyNode" instance=ExtResource("4_ny18i")]
+position = Vector2(1034, 449)
+
+[node name="Enemy3" parent="EnemyNode" instance=ExtResource("4_ny18i")]
+position = Vector2(802, 452)
+
+[node name="Enemy4" parent="EnemyNode" instance=ExtResource("4_ny18i")]
+position = Vector2(557, 475)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HPBar" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "HP"
+script = ExtResource("5_o5u4f")
+
+[node name="coin" type="Label" parent="UI"]
+offset_top = 29.0
+offset_right = 40.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 25
+text = "Coin"
+script = SubResource("GDScript_hsyus")

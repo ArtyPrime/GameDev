@@ -15,6 +15,11 @@ run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://Assets/icon.svg"
 
+[autoload]
+
+Game="*res://Global/Game.gd"
+Utility="*res://Global/Utility.gd"
+
 [input]
 
 left={
