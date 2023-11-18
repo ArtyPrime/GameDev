@@ -61,8 +61,8 @@ func _on_enemy_death_body_entered(body):
 		
 func death():
 		Game.coin += 1
-		Utility.saveGame()
 		velocity.x = 0
 		get_node("AnimatedSprite2D").play("Hit")
 		await get_node("AnimatedSprite2D").animation_finished
 		self.queue_free()
+		Utility.saveGame()

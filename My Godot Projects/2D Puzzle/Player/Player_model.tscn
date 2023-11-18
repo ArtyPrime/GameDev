@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bk0e8afg5r36a"]
+[gd_scene load_steps=46 format=3 uid="uid://bk0e8afg5r36a"]
 
 [ext_resource type="Script" path="res://Player/Player_model.gd" id="1_c51pj"]
 [ext_resource type="Texture2D" uid="uid://b8jcxl0wvxwkn" path="res://Assets/Free/Main Characters/Ninja Frog/Idle (32x32).png" id="1_wxp64"]
@@ -244,7 +244,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n8lul"]
 radius = 9.57826
-height = 26.0
+height = 24.0
 
 [sub_resource type="Animation" id="Animation_8jqlb"]
 resource_name = "Damage"
@@ -361,6 +361,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kygh4"]
 size = Vector2(23.2, 17.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecsej"]
+size = Vector2(12.1044, 9)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.991379, 1)
 script = ExtResource("1_c51pj")
@@ -396,8 +399,8 @@ shape = SubResource("RectangleShape2D_kygh4")
 [node name="PlayerKill" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerKill"]
-position = Vector2(-0.5, 2)
-shape = SubResource("CapsuleShape2D_n8lul")
+position = Vector2(1.0087, 10.5)
+shape = SubResource("RectangleShape2D_ecsej")
 
 [connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]
 [connection signal="body_entered" from="PlayerKill" to="." method="_on_player_kill_body_entered"]
