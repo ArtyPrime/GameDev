@@ -45,6 +45,7 @@ func _physics_process(delta):
 
 
 func _on_player_death_body_entered(body):
+	print(body.name)
 	if body.name == "Enemy":
 		Game.playerHP -= 1
 		velocity.y = -600
@@ -53,7 +54,7 @@ func _on_player_death_body_entered(body):
 		
 
 func _on_player_kill_body_entered(body):
-	print("Killing")
+	print(body.name)
 	if body.name == "Enemy":
 		
 		velocity.y = -600

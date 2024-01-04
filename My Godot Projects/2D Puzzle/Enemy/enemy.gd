@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-var SPEED = 30.0
+@export var SPEED = 30.0
 var JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var player
+@onready var player = get_tree().get_first_node_in_group("player")
 var chase = false
+
 
 func _ready():
 	get_node("AnimatedSprite2D").play("Idle")
@@ -12,9 +13,9 @@ func _ready():
 func _physics_process(delta):
 	# Add the gravity.
 	velocity.y += gravity * delta
-	player = get_node("../../PlayerNode/Player")
-	var direction = (player.position - self.position).normalized()
-	
+	var direction = player.position.normalized()
+	direction = (player.position - self.position).normalized()
+
 	if chase == true:
 		if get_node("AnimatedSprite2D").animation != "Hit":
 			get_node("AnimatedSprite2D").play("Run")
@@ -39,8 +40,7 @@ func _on_detection_body_entered(body):
 
 func _on_detection_body_exited(body):
 	get_node("AnimatedSprite2D").play("Idle")
-	player = get_node("../../PlayerNode/Player")
-	var direction = (player.position - self.position).normalized()
+	var direction = (player.global_position - self.global_position).normalized()
 	if body.name == "Player":
 		chase = false
 		if direction.x > 0:

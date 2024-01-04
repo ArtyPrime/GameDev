@@ -1,12 +1,12 @@
-[gd_scene load_steps=38 format=3 uid="uid://o1c7pykva1fy"]
+[gd_scene load_steps=37 format=3 uid="uid://o1c7pykva1fy"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_e0abq"]
 [ext_resource type="Texture2D" uid="uid://c43durayasc2d" path="res://Assets/Free/Main Characters/Mask Dude/Idle (32x32).png" id="1_in8t2"]
 [ext_resource type="Texture2D" uid="uid://bqro6pbduid6h" path="res://Assets/Free/Main Characters/Mask Dude/Hit (32x32).png" id="2_qyb1v"]
 [ext_resource type="Texture2D" uid="uid://beyniyph18mao" path="res://Assets/Free/Main Characters/Mask Dude/Run (32x32).png" id="3_aarqa"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mu7w3"]
-height = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eocns"]
+height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0fic"]
 atlas = ExtResource("2_qyb1v")
@@ -228,47 +228,36 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6r8ns"]
-radius = 128.004
+radius = 257.049
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tvck"]
-size = Vector2(8, 23.5)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eu4ag"]
-height = 24.0
+size = Vector2(15.5, 11.75)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_e0abq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 1)
-shape = SubResource("CapsuleShape2D_mu7w3")
-metadata/_edit_lock_ = true
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_eocns")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3ttip")
-animation = &"Hit"
+animation = &"Idle"
 autoplay = "Idle"
 metadata/_edit_lock_ = true
 
 [node name="Detection" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+visible = false
 shape = SubResource("CircleShape2D_6r8ns")
 
 [node name="EnemyDeath" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyDeath"]
-position = Vector2(0, -5.75)
+position = Vector2(2.25, -8)
 shape = SubResource("RectangleShape2D_4tvck")
-
-[node name="PlayerDeath" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeath"]
-position = Vector2(0, 4)
-shape = SubResource("CapsuleShape2D_eu4ag")
 
 [connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]
 [connection signal="body_entered" from="EnemyDeath" to="." method="_on_enemy_death_body_entered"]
-[connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]

@@ -359,10 +359,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kygh4"]
-size = Vector2(23.2, 17.5)
+size = Vector2(20.1739, 17.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecsej"]
-size = Vector2(12.1044, 9)
+size = Vector2(8.06957, 9)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.991379, 1)
@@ -371,12 +371,12 @@ script = ExtResource("1_c51pj")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_l2m64")
-animation = &"Damage"
+animation = &"Idle"
 autoplay = "Idle"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 2)
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_n8lul")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -393,13 +393,13 @@ libraries = {
 [node name="PlayerDeath" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDeath"]
-position = Vector2(-0.504348, -2.75)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_kygh4")
 
 [node name="PlayerKill" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerKill"]
-position = Vector2(1.0087, 10.5)
+position = Vector2(-1.80369e-07, 12)
 shape = SubResource("RectangleShape2D_ecsej")
 
 [connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]

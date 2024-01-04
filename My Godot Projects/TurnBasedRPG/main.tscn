@@ -1,3 +1,35 @@
-[gd_scene format=3 uid="uid://ccctlq33wegff"]
+[gd_scene load_steps=3 format=3 uid="uid://ccctlq33wegff"]
 
-[node name="Main" type="Node2D"]
+[ext_resource type="Script" path="res://main.gd" id="1_adkpm"]
+[ext_resource type="Texture2D" uid="uid://b757ugjorq237" path="res://Assets/Free/Background/Blue.png" id="1_e8cdi"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_adkpm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_e8cdi")
+stretch_mode = 1
+
+[node name="Play" type="Button" parent="."]
+offset_left = 400.0
+offset_top = 100.0
+offset_right = 800.0
+offset_bottom = 250.0
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 400.0
+offset_top = 350.0
+offset_right = 800.0
+offset_bottom = 500.0
+text = "Quit"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="button_down" from="Quit" to="." method="_on_quit_button_down"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
